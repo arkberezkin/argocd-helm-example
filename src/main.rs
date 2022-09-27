@@ -22,7 +22,7 @@ impl HelloService for HelloServiceImplementation {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let address = "0.0.0.0:3000".parse().unwrap();
+    let address = "0.0.0.0:80".parse().unwrap();
     let hello_service = HelloServiceImplementation::default();
 
     println!("Starting server");
