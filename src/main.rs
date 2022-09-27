@@ -22,11 +22,15 @@ impl HelloService for HelloServiceImplementation {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let address = "[::1]:8080".parse().unwrap();
+    let address = "0.0.0.0:3000".parse().unwrap();
     let hello_service = HelloServiceImplementation::default();
 
-    Server::builder().add_service(HelloServiceServer::new(hello_service))
-        .serve(address)
+    println!("Starting server");
+
+    let server = Server::builder().add_service(HelloServiceServer::new(hello_service))
+        .serve(address);
+
+    server
         .await?;
 
     Ok(())
