@@ -8,7 +8,7 @@ spec:
   source:
     chart: service
     repoURL: https://arkberezkin.github.io/charts/
-    targetRevision: 1.16.1
+    targetRevision: 0.1.1
     helm:
       releaseName: service
   destination:
