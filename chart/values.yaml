@@ -6,10 +6,10 @@ global:
   replicaCount: 1
 
   image:
-    repository: localhost:32000/nginx
+    repository: localhost:32000/argocd-helm-example
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "1.16.0"
+    tag: "0.0.1"
 
   imagePullSecrets: []
   nameOverride: ""
