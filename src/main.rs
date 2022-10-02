@@ -35,6 +35,14 @@ impl HelloService for HelloServiceImplementation {
   type WatchStream = ResponseStream;  
 
   async fn hello(&self, request: Request<HelloRequest>) -> Result<Response<HelloResponse>, Status> {
+    println!("Hello request");
+
+    let metadata = request.metadata();
+
+    for (key, value) in metadata.clone().into_headers() {
+        println!("{:?}: {:?}", key.unwrap(), value);
+    }
+
     let r = request.into_inner();
 
     Ok(Response::new(hello::HelloResponse {
