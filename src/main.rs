@@ -1,9 +1,10 @@
 use tonic::{transport::Server, Request, Response, Status};
-
+use tonic_reflection::server::Builder;
 use futures::Stream;
 use std::{pin::Pin, time::Duration};
 use tokio::sync::mpsc;
 use tokio_stream::{wrappers::ReceiverStream, StreamExt};
+
 use hello::{
     HelloRequest,
     HelloResponse,
@@ -18,6 +19,9 @@ use hello::{
 
 pub mod hello {
     tonic::include_proto!("hello");
+
+    pub(crate)  const REFLECTION_SERVICE_DESCRIPTOR: &[u8] =
+        tonic::include_file_descriptor_set!("my_descriptor");
 }
 
 type ResponseStream = Pin<Box<dyn Stream<Item = Result<HealthCheckResponse, Status>> + Send>>;
@@ -86,9 +90,17 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let address = "0.0.0.0:80".parse().unwrap();
     let hello_service = HelloServiceImplementation::default();
 
+    println!("Building reflection");
+
+    let reflection_service = Builder::configure()
+        .register_encoded_file_descriptor_set(hello::REFLECTION_SERVICE_DESCRIPTOR)
+        .build()?;
+
     println!("Starting server");
 
-    let server = Server::builder().add_service(HelloServiceServer::new(hello_service))
+    let server = Server::builder()
+        .add_service(reflection_service)
+        .add_service(HelloServiceServer::new(hello_service))
         .serve(address);
 
     server

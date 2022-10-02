@@ -9,7 +9,7 @@ global:
     repository: localhost:32000/argocd-helm-example
     pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
-    tag: "0.0.1"
+    tag: "0.0.2"
 
   imagePullSecrets: []
   nameOverride: ""
