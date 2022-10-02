@@ -1,6 +1,6 @@
 dependencies:
 - name: service
   repository: https://arkberezkin.github.io/charts/
-  version: 0.1.8
-digest: sha256:3a8fb24062610153841d30702692fc45b2db9cb4699d01b4e40be3cf2c684242
-generated: "2022-10-01T23:44:33.650497+02:00"
+  version: 0.1.9
+digest: sha256:b838793c19aaf0eb7fe1f548a0fbc158a8d57def6efe7a09f86f133bdf39926e
+generated: "2022-10-02T14:10:44.558893+02:00"
