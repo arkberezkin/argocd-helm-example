@@ -19,6 +19,8 @@ RUN cargo build --release --bin argocd-helm-example
 
 FROM debian:buster-slim AS runtime
 
+RUN apt update && apt install curl -y
+
 WORKDIR /app
 COPY --from=builder /app/target/release/argocd-helm-example /usr/local/bin/
 

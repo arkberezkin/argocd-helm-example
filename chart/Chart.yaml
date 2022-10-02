@@ -25,5 +25,5 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: service
-    version: 0.1.9
+    version: 0.1.10
     repository: "@charts"
