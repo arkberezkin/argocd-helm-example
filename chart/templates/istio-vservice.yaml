@@ -10,6 +10,8 @@ spec:
   - istio-system/gateway
   http:
     - match:
+      - uri:
+          prefix: /
         port: 9000
       route:
       - destination:
