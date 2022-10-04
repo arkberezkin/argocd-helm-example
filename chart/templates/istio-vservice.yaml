@@ -1,7 +1,7 @@
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: argocd-web
+  name: argocd-helm-example-service
   namespace: argocd-helm-example-service
 spec:
   hosts:
