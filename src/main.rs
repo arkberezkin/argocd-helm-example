@@ -45,6 +45,8 @@ impl HelloService for HelloServiceImplementation {
 
     let r = request.into_inner();
 
+    println!("Name: {}", r.name);
+
     Ok(Response::new(hello::HelloResponse {
         message: format!("Hello, {}!", r.name)
     }))
