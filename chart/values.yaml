@@ -24,7 +24,8 @@ global:
     # If not set and create is true, a name is generated using the fullname template
     name: ""
 
-  podAnnotations: {}
+  podAnnotations:
+    sidecar.istio.io/extraStatTags: request_url
 
   podSecurityContext: {}
     # fsGroup: 2000
